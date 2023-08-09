@@ -84,7 +84,7 @@ def main():
     print ("Starting datacollection")
     file_name=Generate_file_name()
     file_name_path="/bootflash/guest-share/"+file_name+""
-    Find_platform_redundancy_interface()
+#    Find_platform_redundancy_interface()
     with open(file_name_path, 'w') as f:
         for command in cmd_list:
             #print (command)
