@@ -8,42 +8,8 @@ dst="ftp://calo:calo@10.124.154.60:/temp/"
 #List of commands
 cmd_list=[
 "sh ver | i uptime|Installation mode|Cisco IOS Software",
-"sh redundancy | i ptime|Location|Current Software state",
-"sh processes cpu platform sorted | i wncd",
-"sh platform resources",
-"show process memory platform sorted",
-"show processes memory platform accounting",
-"sh platform",
-"sh inventory",
-"sh environment",
-"show license summary | i Status:",
-"sh ap sum | i Number of APs",
-"sh ap uptime | ex ____([0-9])+ day",
-"sh ap crash",
-"sh wireless stats ap session termination",
-"show wireless stats ap history | i Disjoined",
-"sh ap tag summary | i  Yes",
-"show ap sum sort descending client-count | i __0__",
-"sh wireless summary",
-"sh wireless stats client detail | i Authenticating         :|Mobility               :|IP Learn               :|Webauth Pending        :|Run                    :|Delete-in-Progress     :",
-"sh wireless stats client delete reasons | e : 0",
-"sh wireless stats trace-on-failure",
-"show radius statistics",
-"sh aaa servers | i Platform Dead: total|RADIUS: id",
-"sh ap dot11 5ghz summary",
-"sh ap dot11 24ghz summary",
-"sh ap auto-rf dot11 5ghz | i Channel changes due to radar|AP Name|Channel Change Count",
-"sh ap auto-rf dot11 24ghz | i Channel Change Count|AP Name",
-"sh ap dot11 5ghz load-info",
-"sh ap dot11 24ghz load-info",
-"sh platform hardware chassis active qfp statistics drop",
-"show platform hardware chassis active qfp feature wireless punt statistics",
-"sh buffers | i buffers|failures",
-"show platform hardware chassis active qfp datapath utilization | i Load",
-"show wireless mobility sum",
 "sh nmsp status"
 ]
-
 
 #List of commands require several outputs
 multiple_cmd_list=[
@@ -106,7 +72,7 @@ def Find_platform_redundancy_interface():
         cmd_list.insert(len(cmd_list)-7,cmd)
     #Find interface version to change telemetry command
     version=cli.cli("sh ver | i Cisco IOS Software")
-    images=["Version 16.12","Version 17.1","Version 17.2","Version 17.3","Version 17.4","Version 17.5","Version 17.6","Version 17.7","Version 17.8","Version 17.9","Version 17.10","Version 17.11","Version 17.12"]
+    images=["Version 16.12","Version 17.1","Version 17.2","Version 17.3","Version 17.4","Version 17.5","Version 17.6","Version 17.7"]
     if any(x in version for x in images):
         cmd="sh telemetry internal connection"
         cmd_list.insert(len(cmd_list)-1,cmd)
